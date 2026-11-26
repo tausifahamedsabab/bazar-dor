@@ -1,7 +1,15 @@
-type BanglaDateProps = {
-  dateString: string;
-};
+import { connection } from "next/server";
 
-export default function BanglaDate({ dateString }: BanglaDateProps) {
-  return <p className="text-sm text-gray-500">{dateString}</p>;
+export default async function BanglaDate() {
+  await connection();
+
+  const date = new Date();
+  const formatted = new Intl.DateTimeFormat("bn-BD", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
+  return <p className="text-sm text-gray-500">{formatted}</p>;
 }

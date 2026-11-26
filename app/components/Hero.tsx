@@ -15,9 +15,12 @@ export default function Hero() {
             সর্বশেষ বাজার দর দেখুন।
           </p>
 
-          <button className="mt-6 rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white hover:bg-green-700">
+          <a
+            href="#সব-পণ্য"
+            className="mt-6 inline-block rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white hover:bg-green-700"
+          >
             সব দর দেখুন
-          </button>
+          </a>
         </div>
 
         <div className="flex justify-center">

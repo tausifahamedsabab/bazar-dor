@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর (BazarDor)
+
+BazarDor is a Bangla market-price tracking web app where users can browse daily essential product prices, compare market-wise rates, explore category-based price changes, and sign in to view protected product details.
+
+## Technologies Used
+
+- **Next.js 16 (App Router)**
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Better Auth** (email/password + Google + GitHub)
+- **react-hot-toast**
+
+## Key Features
+
+1. **Responsive market dashboard** - Home page shows top price risers, top price fallers, and all products in a responsive grid with loading skeletons.
+2. **Category browsing with sorting** - Category pages include sort options (ডিফল্ট, দাম: কম থেকে বেশি, দাম: বেশি থেকে কম), loading state, and empty/invalid-state CTA.
+3. **Protected product details** - `/product/[slug]` requires login and shows summary, min/max/average price, and market-wise price table.
+4. **Authentication** - Sign in/sign up with email-password and social login (Google/GitHub), toast feedback, session-aware navbar, and sign out.
+5. **Profile update** - Logged-in users can view profile and update their name via Better Auth `updateUser`.
+
+## Environment Variables
+
+Create `.env.local`:
+
+```bash
+API_BASE_URL=your_api_base_url
+BETTER_AUTH_SECRET=your_secret
+BETTER_AUTH_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Notes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Auth currently uses Better Auth **memory adapter** for local development. For production/Vercel, switch to a persistent database adapter (Prisma/Drizzle/Kysely/MongoDB).
+- Make sure OAuth callback URLs are configured in Google/GitHub consoles for your `BETTER_AUTH_URL`.
